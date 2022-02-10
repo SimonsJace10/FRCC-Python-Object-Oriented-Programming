@@ -6,12 +6,16 @@ words = {'Sun': 0, 'Mon': 0, 'Tue': 0, 'Wed': 0, 'Thu': 0, 'Fri': 0, 'Sat': 0}
 
 # function to store the words from the file in a dictionary
 def store_words():
+    # for every line ...
     for line in open_file(file_name):
-        if line.startswith("From"):
+        # ... if the line starts with 'From ' ...
+        if line.startswith("From "):
+            # ... split the word into a list
             temp_str = line.split()
+            # ... and temp_str is set equal to the 3rd element in said list
             word = temp_str[2]
-            print(word)
             # take the 3rd word and store it
+            # check what day it is and increment the count of that day depending on which one it is
             if word == "Sun":
                 words['Sun'] = words['Sun'] + 1
             elif word == 'Mon':
@@ -28,6 +32,9 @@ def store_words():
                 words['Sat'] = words['Sat'] + 1
             else:
                 print("none of the above")
+        # otherwise continue
+        else:
+            continue
 
 
 # define an open_file function, which takes the file_name from the top
@@ -47,5 +54,7 @@ def open_file(file_name):
         exit()
 
 
+# call the function
 store_words()
+# print out the dictionary
 print(words)
