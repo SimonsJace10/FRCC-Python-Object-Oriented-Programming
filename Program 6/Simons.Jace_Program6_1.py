@@ -1,17 +1,22 @@
-# declare an empty list for the words
-words = []
-# string for file name
-file_name = "romeo.txt"
+# declare the file_name as words.txt
+file_name = "../files/words.txt"
+# instantiate words as an empty dictionary
+words = {}
 
 
-# define a function which reads the romeo.txt file line by line, and extracts the words from it, storing them in the
-# list if they are not already in said list
-def read_file():
+# function to store the words from the file in a dictionary
+def store_words ():
     for line in open_file(file_name):
         for word in line.split():
-            print(word)
-            if word not in words:
-                words.append(word)
+            words[word] = None
+
+
+# function to check whether a word is in the dictionary
+def search (string):
+    if string in words:
+        return True
+    else:
+        return False
 
 
 # define an open_file function, which takes the file_name from the top
@@ -31,5 +36,6 @@ def open_file(file_name):
         exit()
 
 
-print(read_file())
-print(words)
+store_words()
+word_to_search_for = "word"
+print(search(word_to_search_for))
