@@ -1,6 +1,6 @@
 # declare the file_name as words.txt
 file_name = "../files/mbox-short.txt"
-# instantiate words as an empty dictionary
+# instantiate emails as a list of all emails
 emails = {'gopal.ramasammycook@gmail.com': 0, 'louis@media.berkeley.edu': 0, 'cwen@iupui.edu': 0,
           'antranig@caret.cam.ac.uk': 0, 'rjlowe@iupui.edu': 0, 'gsilver@umich.edu': 0, 'david.horwitz@uct.ac.za': 0,
           'wagnermr@iupui.edu': 0, 'zqian@umich.edu': 0, 'stephen.marquard@uct.ac.za': 0, 'ray@media.berkeley.edu': 0}
@@ -15,8 +15,8 @@ def store_words():
             temp_str = line.split()
             # ... and temp_str is set equal to the 3rd element in said list
             word = temp_str[1]
-            # take the 3rd word and store it
-            # check what day it is and increment the count of that day depending on which one it is
+            # take the 2nd word and store it
+            # check what email it is and increment the count depending on which one it is
             if word == 'gopal.ramasammycook@gmail.com':
                 emails['gopal.ramasammycook@gmail.com'] += 1
             if word == 'louis@media.berkeley.edu':
@@ -44,15 +44,23 @@ def store_words():
             continue
 
 
+# most emails function prints the sender with the most emails and how many emails they sent
 def most_emails():
+    # instantiate max as 0
     current_maximum = 0
+    # instantiate sender as an empty string
     sender = ''
+    # iterate through every item in the emails dictionary
     for item in emails:
+        # if the current item's value is larger than the max, it is the new current max
         if emails[item] > current_maximum:
             current_maximum = emails[item]
+            # set the sender to be the item's key
             sender = item
         else:
+            # otherwise jump to the next item in the for loop
             continue
+    # print the sender and concatenate their messages
     print(sender + ' ' + str(current_maximum))
 
 
@@ -75,5 +83,5 @@ def open_file(file_name):
 
 # call the function
 store_words()
-most_emails()
 # print out the dictionary
+most_emails()
