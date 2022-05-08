@@ -8,11 +8,11 @@ file_name = "romeo.txt"
 # list if they are not already in said list
 def read_file():
     for line in open_file(file_name):
-        for word in line.split():
-            print(word)
+        line.split()
+        for word in line:
             if word not in words:
                 words.append(word)
-
+    print(words)
 
 # define an open_file function, which takes the file_name from the top
 def open_file(file_name):
@@ -31,5 +31,4 @@ def open_file(file_name):
         exit()
 
 
-print(read_file())
-print(words)
+read_file()
